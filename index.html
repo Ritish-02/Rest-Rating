@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rating Prediction</title>
+    <style>
+
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+
+        }
+        body {
+           margin:0;
+           padding:0;
+           display:flex;
+           flex-direction:column;
+          width:100%;
+          background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg&w=1920&h=1080&_gl=1*3oykix*_ga*MTQzNjgwOTU5NC4xNjkwMzgzNDY5*_ga_8JE65Q40S6*MTY5MDM4MzQ3NC4xLjEuMTY5MDM4Mzg2MC4wLjAuMA..");
+          background-position: center;
+          background-size: cover;
+        }
+        .login{
+            width:450px;
+            height: fit-content;
+
+        }
+        .login h1{
+            color: crimson;
+            width:100%;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+
+            margin-bottom:4px;
+        }
+        .form{
+        width: 85%;
+        display:flex;
+        justify-content:flex-end;
+        margin-left:-150px;
+        }
+        input{
+            width: 100%;
+            height: 35px;
+            margin-top:3%;
+            background: rgba(240,255,243,1);
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 1rem;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+            border: 1px 1px 1px rgba(0,0,0,0.3);
+            border-radius: 4px;
+            box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+            transition: box-shadow 0.5s ease;
+        }
+        input:focus{
+            box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2);
+        }
+        .btn{
+           display: inline-block;
+           padding: 10px 30px;
+           color: white;
+           background-color: transparent;
+           border: 2px solid crimson;
+           font-size: 2rem;
+           text-transform: uppercase;
+           letter-spacing: 0.1rem;
+           margin-top: 10px;
+           transition: 0.5s ease;
+           transition-property: background-color, color;
+           width: fit-content;
+           transition-duration: 0.5s;
+
+        }
+        .btn:hover{
+            color:white;
+            background-color: crimson;
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+        .zomato{
+        height:100px;
+        }
+        h1{
+        color: crimson;
+        }
+        .content{
+        font-size:2rem;
+        color:grey;
+        }
+            </style>
+</head>
+<body>
+    <img src="https://w7.pngwing.com/pngs/612/262/png-transparent-zomato-hd-logo-thumbnail.png" alt="zomato image", width="350px" class="zomato">
+
+    <div class="form">
+        <div class="login">
+            <h1>Predict Zomato Restaurant Ratings</h1>
+            <form action="{{url_for('predict')}}" method="post">
+                <input type="text" name="Online Order" placeholder="Order Online (1 or 0)" required="required"/>
+                <input type="text" name="Book Table" placeholder="Book Table (1 or 0)" required="required"/>
+                <input type="text" name="Votes" placeholder="Votes" required="required"/>
+                <input type="text" name="Location" placeholder="Location (in numeric)" required="required"/>
+                <input type="text" name="Restaurant Type" placeholder="Restaurant Type (in numeric)" required="required"/>
+                <input type="text" name="Cuisines" placeholder="Cuisines (in numeric)" required="required"/>
+                <input type="text" name="Cost" placeholder="Cost" required="required"/>
+                <input type="text" name="Menu Item" placeholder="Menu Item (in numeric)" required="required"/>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            </form>
+            <br>
+            <h1>{{ prediction_text }}</h1>
+        </div>
+
+    </div>
+    <div class="content">
+        <marquee>Welcome USER! We are glad you Visited!</marquee>
+        <marquee>This is a tool that will help you to get rating of a resraurant. We have a Machine Learning Model
+            running in the background to help you. </marquee>
+      </div>
+
+</body>
+</html>
